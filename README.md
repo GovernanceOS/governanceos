@@ -1,39 +1,22 @@
 # GovernanceOS
 
-Open-source tools from [GovernanceOS](https://governanceos.si), under the Apache License 2.0. They run on your own machine and make no network calls. `gos-verify` needs Python 3 and nothing else; `goslint` adds two libraries, openpyxl and PyYAML.
+[![PyPI](https://img.shields.io/pypi/v/governanceos)](https://pypi.org/project/governanceos/) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE) [![Tests](https://github.com/GovernanceOS/governanceos/actions/workflows/test.yml/badge.svg)](https://github.com/GovernanceOS/governanceos/actions/workflows/test.yml)
+
+**New in 0.3.0, released 20 October 2026: goslint, the open-source register linter.** It checks the AI and model register you keep in a spreadsheet against 23 regulator rule packs and 246 fields, for Canada, the United States, the GCC, the European Union, the United Kingdom, Switzerland and Asia-Pacific. It runs on your own machine, free and offline, under Apache 2.0.
+
+```
+pip install "governanceos[lint]"
+goslint lint register.xlsx --pack osfi-e23
+```
+
+Open-source tools from [GovernanceOS™](https://governanceos.si), under the Apache License 2.0. They run on your own machine and make no network calls. `gos-verify` needs Python 3 and nothing else; `goslint` adds two libraries, openpyxl and PyYAML.
 
 ```
 pip install governanceos              # gos-verify
 pip install "governanceos[lint]"      # gos-verify and goslint
 ```
 
-## gos-verify: verify an evidence pack offline
-
-An institution that keeps its AI governance records in GovernanceOS can share an evidence pack with an examiner. `gos-verify` checks that pack on the examiner's own machine:
-
-1. It recomputes the SHA-256 hash of every record, checks that each links to the one before it, and checks that the positions run without a gap.
-2. It checks the Ed25519 signature over the whole pack: the header, every record and the summaries.
-3. It prints the signing key's hash and compares it with the one the institution sent you by another route (`--key`), and compares the head with a head it sent you (`--expect`).
-4. It says plainly that the public anchor was not checked, because that needs a network.
-
-```
-gos-verify PACK.json --key KEYHASH [--expect HEAD]
-```
-
-| Exit | Meaning |
-|---|---|
-| 0 | Verified: intact, and signed by the key you pinned |
-| 1 | Intact, but the signer is not pinned |
-| 2 | Chain broken |
-| 3 | Signature invalid |
-| 4 | Head differs from `--expect` |
-| 5 | The pack cannot be read |
-| 6 | The key differs from `--key` |
-
-**What it proves:** the pack was not changed after the key you pinned signed it.
-**What it does not prove:** that the records were true when they were written. That is for the examination.
-
-The same verifier is the single-file download at [governanceos.si/verify](https://governanceos.si/verify). The two are byte-identical.
+Follow GovernanceOS on [YouTube](https://www.youtube.com/@GovernanceOS) and [X](https://x.com/GovernanceOSx). Both tools are described at [governanceos.si/open-source](https://governanceos.si/open-source).
 
 ## goslint: lint a model register offline
 
@@ -93,6 +76,34 @@ Notes and check 4 do not change the exit code.
 **What it does not check:** whether the values are true.
 
 Each pack is generated from GovernanceOS's register coverage research, which read every source at its official URL on 2026-10-19 (`tools/gen_packs.py`). Header synonyms are working guesses for matching column names, not source text.
+
+## gos-verify: verify an evidence pack offline
+
+An institution that keeps its AI governance records in GovernanceOS can share an evidence pack with an examiner. `gos-verify` checks that pack on the examiner's own machine:
+
+1. It recomputes the SHA-256 hash of every record, checks that each links to the one before it, and checks that the positions run without a gap.
+2. It checks the Ed25519 signature over the whole pack: the header, every record and the summaries.
+3. It prints the signing key's hash and compares it with the one the institution sent you by another route (`--key`), and compares the head with a head it sent you (`--expect`).
+4. It says plainly that the public anchor was not checked, because that needs a network.
+
+```
+gos-verify PACK.json --key KEYHASH [--expect HEAD]
+```
+
+| Exit | Meaning |
+|---|---|
+| 0 | Verified: intact, and signed by the key you pinned |
+| 1 | Intact, but the signer is not pinned |
+| 2 | Chain broken |
+| 3 | Signature invalid |
+| 4 | Head differs from `--expect` |
+| 5 | The pack cannot be read |
+| 6 | The key differs from `--key` |
+
+**What it proves:** the pack was not changed after the key you pinned signed it.
+**What it does not prove:** that the records were true when they were written. That is for the examination.
+
+The same verifier is the single-file download at [governanceos.si/verify](https://governanceos.si/verify). The two are byte-identical.
 
 ## Try it
 

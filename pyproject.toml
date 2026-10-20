@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "governanceos"
-version = "0.1.0"
-description = "Open-source tools from GovernanceOS. First: gos-verify, the offline verifier for GovernanceOS evidence packs."
+version = "0.2.0"
+description = "Open-source tools from GovernanceOS: gos-verify, the offline verifier for GovernanceOS evidence packs, and goslint, the offline register linter."
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.8"
 authors = [{ name = "GovernanceOS" }]
-keywords = ["ai governance", "evidence pack", "offline verification", "ed25519", "model risk"]
+keywords = ["ai governance", "evidence pack", "offline verification", "ed25519", "model risk", "model inventory", "register linter"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Environment :: Console",
@@ -21,6 +21,10 @@ classifiers = [
   "Topic :: Security :: Cryptography",
 ]
 
+[project.optional-dependencies]
+# goslint only; gos-verify needs nothing beyond the standard library.
+lint = ["openpyxl>=3.1", "PyYAML>=6.0"]
+
 [project.urls]
 Homepage = "https://governanceos.si"
 Source = "https://github.com/GovernanceOS/governanceos"
@@ -28,6 +32,10 @@ Source = "https://github.com/GovernanceOS/governanceos"
 
 [project.scripts]
 gos-verify = "governanceos.cli:verify"
+goslint = "governanceos.cli:lint"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"governanceos.goslint" = ["packs/*.yaml"]

@@ -1,0 +1,5 @@
+Nebula Regional Health AI inventory. Nebula Regional Health is a fictional institution constructed for illustration; any resemblance to a real organization is unintended.
+System ID,System name,Version,Status,Documentation,Source code,Incident response plan,Point of contact,Last refreshed,Foundation model,Access mode,Data provenance,Known issues,Human oversight
+H-01,Sepsis early-warning,4.2,In production,Model card and validation report,Internal repository,Clinical AI incident plan,Model owner,2026-08-14,n/a (not generative),n/a,Vital signs and laboratory results,None open,A clinician reviews every alert
+H-02,Wayfinder patient assistant,1.3,In production,Vendor system card,Held by the vendor,Clinical AI incident plan,Model owner,2026-09-21,LLM from Northlight Language Systems,Vendor API,Vendor-attested training data and the hospital directory,See the incident log,Staff review flagged conversations
+H-04,Autonomous revenue-cycle coding,2.0,In production,Model card,Internal repository,,Model owner,2026-07-30,n/a (not generative),n/a,Coded claims history,,Coders audit a weekly sample

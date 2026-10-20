@@ -3,7 +3,7 @@ import datetime
 
 from . import VERSION
 from .checks import letter
-from .packs import VERB
+from .packs import BASES, VERB
 
 SCHEMA = "goslint-findings/1"
 LABEL = {"error": "ERROR", "warning": "WARNING", "note": "NOTE"}
@@ -129,13 +129,29 @@ def result_line(s):
         s["notes"], "" if s["notes"] == 1 else "s", code)
 
 
+REGIONS = ["Canada", "United States", "GCC, six states", "European Union", "United Kingdom", "Switzerland",
+           "Asia-Pacific"]
+
+
+def _counts(pairs):
+    return ", ".join("%d %s" % (n, b) for b, n in pairs if n)
+
+
 def pack_list(packs):
-    out = []
-    for p in packs:
-        counts = ", ".join("%d %s" % (n, b) for b, n in p.counts() if n)
-        out.append("%s  %s" % (p.id, p.title))
-        out.append("    %s; instrument %s; read %s; %d fields (%s)" % (p.region, p.instrument_version, p.read,
-                                                                    len(p.fields), counts))
-        out.append("    %s" % p.source)
+    """The packs grouped by region, in the order of the GovernanceOS regulation rows, then a total line."""
+    rank = dict((r, i) for i, r in enumerate(REGIONS))
+    out, region, totals = [], None, dict((b, 0) for b in BASES)
+    for p in sorted(packs, key=lambda p: (rank.get(p.region, len(REGIONS)), p.region, p.id)):
+        if p.region != region:
+            region = p.region
+            out += [""] if out else []
+            out.append(region)
+        out.append("  %s  %s" % (p.id, p.title))
+        out.append("      instrument %s; read %s; %d fields (%s)" % (p.instrument_version, p.read, len(p.fields),
+                                                                   _counts(p.counts())))
+        out.append("      %s" % p.source)
+        for b, n in p.counts():
+            totals[b] += n
+    out += ["", "%d packs, %d fields (%s)" % (len(packs), sum(totals.values()), _counts((b, totals[b]) for b in BASES))]
     return "\n".join(out) + "\n"
 

@@ -40,7 +40,7 @@ The same verifier is the single-file download at [governanceos.si/verify](https:
 Many practitioners keep their AI and model inventory in a spreadsheet. `goslint` checks that spreadsheet (`.xlsx`, `.xlsm` or `.csv`) against regulator rule packs on your own machine and reports four things:
 
 1. **Missing fields.** Each pack lists the fields an instrument names for an inventory, each with its basis in the instrument's own words (required, expected or recommended) and a citation. A missing column is reported once; an empty cell, or a placeholder such as "TBD", once per row.
-2. **Next review date.** Where the instrument's field list names a next review date (OSFI E-23 Appendix 1 does), dates that have passed, and dates that cannot be read, such as 03/04/2027.
+2. **Next review date.** Where the instrument's field list names a next review date (OSFI E-23 Appendix 1 field 17, and the QCB AI Guideline's next planned risk assessment or audit, Article 10.9), dates that have passed, and dates that cannot be read, such as 03/04/2027. goslint reads the date the register holds and computes none of its own.
 3. **Typed or derived.** Whether each cell was typed by a person or derived by a formula, read from the workbook itself.
 4. **What a spreadsheet cannot prove.** No history, no signers, no hashes. True of every spreadsheet, so it is stated once.
 
@@ -50,14 +50,34 @@ goslint lint REGISTER.xlsx --pack osfi-e23 [--sheet NAME] [--as-of YYYY-MM-DD] [
 goslint packs
 ```
 
-| Pack | Instrument | Fields |
-|---|---|---|
-| `osfi-e23` | OSFI Guideline E-23 (2027), Appendix 1, information tracking for models | 17: 6 required, 11 expected |
-| `eu-aia-annex8-a` | EU AI Act, Annex VIII Section A: provider registration, Art. 49(1) | 13: 12 required, 1 recommended |
-| `eu-aia-annex8-b` | Annex VIII Section B as amended by Regulation (EU) 2026/1744: Art. 6(3) systems, Art. 49(2) | 7 required |
-| `eu-aia-annex8-c` | Annex VIII Section C: deployers that are public authorities or EU bodies, Art. 49(3) | 5 required |
+| Region | Pack | Instrument | Fields | Required | Expected | Recommended |
+|---|---|---|---|---|---|---|
+| Canada | `amf-ai` | AMF Guideline for the Use of Artificial Intelligence (March 2026), s. 6, 6.1, 6.2 and Annex 2 | 13 | 0 | 5 | 8 |
+|  | `osfi-e23` | OSFI Guideline E-23 (2027), Appendix 1: information tracking for models | 17 | 6 | 11 | 0 |
+| United States | `nist-ai-600-1` | NIST AI 600-1, Generative AI Profile, GV-1.6-003 | 7 | 0 | 0 | 7 |
+|  | `nist-ai-rmf-playbook-gv16` | NIST AI RMF Playbook, GOVERN 1.6 (companion to NIST AI 100-1) | 7 | 0 | 0 | 7 |
+|  | `us-co-3ccr702-10` | Colorado 3 CCR 702-10 (Regulation 10-1-1), s. 5.A.9 and 5.A.10: inventory of ECDIS, algorithms and predictive models | 6 | 6 | 0 | 0 |
+| GCC | `cbuae-ai-gn` | CBUAE Guidance Note on the responsible adoption and use of AI and ML by licensed financial institutions (2026), para 2(f) | 4 | 3 | 1 | 0 |
+|  | `cbuae-mms` | CBUAE Model Management Standards, Part II, 4.4 and 10.5.2 | 12 | 12 | 0 | 0 |
+|  | `qcb-ai` | QCB Artificial Intelligence Guideline (2024), Article 10 Register | 20 | 17 | 3 | 0 |
+| European Union | `ecb-egim-model-register` | ECB Guide to internal models (version 4.1, June 2026), paras 6 and 13 | 10 | 8 | 1 | 1 |
+|  | `esma-ai-investment-records` | ESMA Public Statement on AI in retail investment services (2024), paras 23 and 24 | 6 | 0 | 6 | 0 |
+|  | `eu-aia-annex8-a` | EU AI Act, Annex VIII Section A: provider registration, Art. 49(1) | 13 | 12 | 0 | 1 |
+|  | `eu-aia-annex8-b` | EU AI Act, Annex VIII Section B as amended by Regulation (EU) 2026/1744: Art. 6(3) systems, Art. 49(2) | 7 | 7 | 0 | 0 |
+|  | `eu-aia-annex8-c` | EU AI Act, Annex VIII Section C: deployers that are public authorities or EU bodies, Art. 49(3) | 5 | 5 | 0 | 0 |
+| United Kingdom | `pra-ss1-23` | PRA SS1/23 Model risk management principles for banks, Principle 1.2 and related clauses | 21 | 0 | 11 | 10 |
+| Switzerland | `finma-08-2024` | FINMA Guidance 08/2024, Governance and risk management when using AI, 2.1 and 2.2 | 4 | 0 | 3 | 1 |
+| Asia-Pacific | `au-ai-register-template` | Australia National AI Centre AI register template | 12 | 0 | 0 | 12 |
+|  | `au-gaia-register` | Australia Guidance for AI Adoption, Implementation guidance 4.1.1 | 11 | 0 | 0 | 11 |
+|  | `au-vaiss-guardrail9` | Australia Voluntary AI Safety Standard (2024), Guardrail 9, 9.1.1 | 11 | 0 | 0 | 11 |
+|  | `cn-algorithm-filing` | China algorithm filing: Algorithm Recommendation Provisions Art. 24, with Labeling Measures Art. 12 | 7 | 7 | 0 | 0 |
+|  | `mas-ai-mrm-ip-2024` | MAS Information Paper, AI Model Risk Management (December 2024), 5.2 | 17 | 0 | 0 | 17 |
+|  | `mas-airm-gl-2026` | MAS Guidelines on AI Risk Management for Financial Institutions (October 2026), 4.5 to 4.9 | 15 | 0 | 0 | 15 |
+|  | `rbi-free-ai-inventory` | RBI FREE-AI Committee Report (2025), 4.4.48, 4.4.67 to 4.4.69 and Recommendation 23 | 11 | 0 | 0 | 11 |
+|  | `rbi-mrm-draft-2026` | RBI draft Guidance on Model Risk Management (2026), paras 21 to 23 (draft, not in force) | 10 | 8 | 1 | 1 |
+| **All** | **23 packs** | | **246** | **91** | **42** | **113** |
 
-Packs are chosen, never assumed: without `--pack`, goslint lists the installed packs and stops, so a register is checked only against the jurisdictions it answers to. Severity follows the basis: required is an error, expected a warning, recommended a note.
+Packs are chosen, never assumed: without `--pack`, goslint lists the installed packs by region and stops, so a register is checked only against the jurisdictions it answers to. Name several with commas: `--pack osfi-e23,amf-ai`. Severity follows the basis: required is an error, expected a warning, recommended a note.
 
 | Exit | Meaning |
 |---|---|
@@ -76,10 +96,12 @@ Each pack is generated from GovernanceOS's register coverage research, which rea
 
 ## Try it
 
-`tests/data` holds a sample pack from a fictional institution and a tampered copy of it, and the same institution's model register, kept by hand with the gaps such registers have. Nebula Mutual is a fictional institution constructed for illustration; any resemblance to a real organization is unintended.
+`tests/data` holds a sample pack from a fictional institution and a tampered copy of it, the same institution's model register, kept by hand with the gaps such registers have, and the registers of two more fictional institutions. Nebula Mutual, Nebula Gulf Bank and Nebula Regional Health are fictional institutions constructed for illustration; any resemblance to a real organization is unintended.
 
 ```
-goslint lint tests/data/nebula-mutual-register.xlsx --pack osfi-e23 --as-of 2026-10-19
+goslint lint tests/data/nebula-mutual-register.xlsx --pack osfi-e23,amf-ai --as-of 2026-10-19
+goslint lint tests/data/nebula-gulf-bank-register.csv --pack cbuae-ai-gn,cbuae-mms
+goslint lint tests/data/nebula-regional-health-register.csv --pack nist-ai-600-1,nist-ai-rmf-playbook-gv16
 ```
 
 The tests need the lint extra:

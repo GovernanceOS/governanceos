@@ -230,8 +230,8 @@ def check_review_dates(layout, packs, columns, as_of, grace_days):
             if days > grace_days:
                 grace = ", grace %d days" % grace_days if grace_days else ""
                 out.append(_finding("review_date", "overdue", "error", p, f,
-                                    "Next review date %s is %d day%s past (as of %s%s)."
-                                    % (d.isoformat(), days, "" if days == 1 else "s", as_of.isoformat(), grace),
+                                    "%s: %s is %d day%s past (as of %s%s)."
+                                    % (f.label, d.isoformat(), days, "" if days == 1 else "s", as_of.isoformat(), grace),
                                     layout, r, row, c))
     return out, info
 

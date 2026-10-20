@@ -3,8 +3,8 @@
     python tools/gen_packs.py COVERAGE.json [PACK_ID ...]
 
 COVERAGE.json is the research export (one entry per proposed pack, each field with its basis and
-citation, every source read at the official URL). With no PACK_ID, the packs goslint ships are
-written. Each pack is written to src/governanceos/goslint/packs/<id>.yaml, then read back with
+citation, every source read at the official URL). With no PACK_ID, every pack in the research is
+written (goslint ships them all, D154) and any pack file the research no longer holds is removed. Each pack is written to src/governanceos/goslint/packs/<id>.yaml, then read back with
 yaml.safe_load and compared with the source, so a pack cannot drift from the research.
 Strings are written as JSON strings, which YAML reads unchanged. Needs PyYAML.
 """
@@ -14,10 +14,11 @@ import sys
 
 import yaml
 
-SHIPPED = ["osfi-e23", "eu-aia-annex8-a", "eu-aia-annex8-b", "eu-aia-annex8-c"]
-
-# The field that holds the regulator's own next review date. goslint check 2 reads only this field.
-NEXT_REVIEW_FIELD = {"osfi-e23": "next_review_date"}
+# The field that holds the regulator's own next review date. goslint check 2 reads only this field, and only
+# where the instrument's field list itself names a next review date: E-23 Appendix 1 field 17, and QCB 10.9's
+# next planned risk assessment or audit. Not here: "dates of review" (Australia), past review, validation or
+# update dates, review status and validation frequency, none of which is a next review date.
+NEXT_REVIEW_FIELD = {"osfi-e23": "next_review_date", "qcb-ai": "next_assessment_date"}
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "governanceos", "goslint", "packs")
 
@@ -72,7 +73,11 @@ def main(argv):
         cov = json.load(f)
     read = cov["generated"]
     by_id = {p["id"]: p for p in cov["packs"]}
-    for pid in argv[2:] or SHIPPED:
+    for pid, fid in NEXT_REVIEW_FIELD.items():
+        if fid not in [f["id"] for f in by_id[pid]["fields"]]:
+            raise SystemExit("NEXT_REVIEW_FIELD: %s has no field %s" % (pid, fid))
+    ids = argv[2:] or list(by_id)
+    for pid in ids:
         p = by_id[pid]
         text = render(p, read)
         if yaml.safe_load(text) != expected(p, read):
@@ -81,6 +86,11 @@ def main(argv):
         with open(path, "w", encoding="utf-8", newline="\n") as f:
             f.write(text)
         print("%s: %d fields -> %s" % (pid, len(p["fields"]), os.path.normpath(path)))
+    if not argv[2:]:
+        for name in sorted(os.listdir(OUT)):
+            if name.endswith(".yaml") and name[:-5] not in by_id:
+                os.remove(os.path.join(OUT, name))
+                print("removed %s: not in the research" % name)
     return 0
 
 

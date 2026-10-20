@@ -1,0 +1,6 @@
+Nebula Gulf Bank model inventory. Nebula Gulf Bank is a fictional institution constructed for illustration; any resemblance to a real organization is unintended.
+Model ID,Model name,Purpose,Risk rating,Model tier,Vendor,Status,Documentation,Step owner,Validation history,Consultants,Last monitoring date,Last validation date
+M-01,Retail credit decisioning,Decisions on retail credit applications,High,Tier 1,In house,In production,Development and validation reports,Model owner,Validated 2026-03-15,None,2026-09-30,2026-03-15
+M-02,AML monitoring,Alerts on transactions for AML review,High,Tier 1,In house,In production,Development and validation reports,Model owner,Validated 2025-11-20,None,2026-09-30,
+M-03,Noor customer assistant,Answers customer questions,High,Tier 1,Meridian Language Systems,In production,Vendor model card and validation report,Model owner,Validated 2026-06-02,TBD,2026-10-05,2026-06-02
+M-10,Sharia-screening assist,Prepares products for Sharia board review,Medium,Tier 2,In house,Pilot,Design note,Model owner,None yet,None,2026-10-01,

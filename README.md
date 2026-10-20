@@ -45,7 +45,7 @@ Many practitioners keep their AI and model inventory in a spreadsheet. `goslint`
 4. **What a spreadsheet cannot prove.** No history, no signers, no hashes. True of every spreadsheet, so it is stated once.
 
 ```
-goslint lint REGISTER.xlsx [--pack osfi-e23] [--sheet NAME] [--as-of YYYY-MM-DD] [--grace-days N]
+goslint lint REGISTER.xlsx --pack osfi-e23 [--sheet NAME] [--as-of YYYY-MM-DD] [--grace-days N]
                            [--json findings.json] [--quiet | --verbose]
 goslint packs
 ```
@@ -57,7 +57,7 @@ goslint packs
 | `eu-aia-annex8-b` | Annex VIII Section B as amended by Regulation (EU) 2026/1744: Art. 6(3) systems, Art. 49(2) | 7 required |
 | `eu-aia-annex8-c` | Annex VIII Section C: deployers that are public authorities or EU bodies, Art. 49(3) | 5 required |
 
-Without `--pack`, every installed pack runs. Severity follows the basis: required is an error, expected a warning, recommended a note.
+Packs are chosen, never assumed: without `--pack`, goslint lists the installed packs and stops, so a register is checked only against the jurisdictions it answers to. Severity follows the basis: required is an error, expected a warning, recommended a note.
 
 | Exit | Meaning |
 |---|---|

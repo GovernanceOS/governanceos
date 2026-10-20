@@ -29,7 +29,7 @@ fields:
     label: "AI system trade name and an unambiguous reference for identification and traceability"
     basis: required
     citation: "AI Act Annex VIII, Section A, item 4"
-    synonyms: ["trade name", "system name", "product name", "system id", "reference", "version"]
+    synonyms: ["trade name", "system name", "product name", "system id", "reference"]
   - id: intended_purpose_components
     label: "Intended purpose, and components and functions supported"
     basis: required

@@ -1,4 +1,4 @@
-"""goslint lint REGISTER [--pack IDS] [--sheet NAME] [--as-of YYYY-MM-DD] [--grace-days N] [--json PATH|-]
+"""goslint lint REGISTER --pack IDS [--sheet NAME] [--as-of YYYY-MM-DD] [--grace-days N] [--json PATH|-]
 goslint packs
 
 Exit 0: no errors or warnings. 1: errors or warnings reported. 2: usage or setup error.
@@ -49,7 +49,7 @@ def _parser():
     sub = ap.add_subparsers(dest="command", metavar="{lint,packs}")
     lp = sub.add_parser("lint", help="lint a register (.xlsx, .xlsm or .csv)", description=DESCRIPTION)
     lp.add_argument("register", help="the register file")
-    lp.add_argument("--pack", help="comma-separated pack ids (default: every installed pack; see 'goslint packs')")
+    lp.add_argument("--pack", help="comma-separated pack ids, required; 'goslint packs' lists them")
     lp.add_argument("--sheet", help="the sheet that holds the register (default: the most matching headers)")
     lp.add_argument("--as-of", dest="as_of", metavar="YYYY-MM-DD", help="the date check 2 runs against (default: today)")
     lp.add_argument("--grace-days", dest="grace_days", metavar="N", type=int, default=0,
@@ -87,7 +87,11 @@ def _run(args, out):
     as_of = _date(args.as_of) if args.as_of else None
     if args.json and args.json != "-" and _same_file(args.json, args.register):
         raise SetupError("--json names the register itself; goslint never writes to the register.")
-    ids = [i.strip() for i in args.pack.split(",") if i.strip()] if args.pack else None
+    if not args.pack:
+        # Packs are chosen, never assumed (D153.4): every pack on a single-jurisdiction register is noise.
+        raise SetupError("Choose the rule packs for this register's jurisdictions with --pack, "
+                         "for example --pack osfi-e23. Installed packs:\n" + report.pack_list(packs.load_many()).rstrip())
+    ids = [i.strip() for i in args.pack.split(",") if i.strip()]
     res = lint(args.register, ids, args.sheet, as_of, args.grace_days)
     s = report.summary(res.findings)
     if args.json:

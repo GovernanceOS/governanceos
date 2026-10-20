@@ -176,12 +176,24 @@ class Terminal(unittest.TestCase):
         _, out, _ = run("lint", XLSX, "--pack", "osfi-e23", "--as-of", AS_OF, "--verbose")
         self.assertIn('next_review_date           column P "Next review date"', out)
 
-    def test_default_runs_every_pack_and_says_so(self):
-        code, out, _ = run("lint", XLSX, "--as-of", AS_OF)
-        self.assertEqual(code, 1)
-        self.assertIn("Every installed pack ran", out)
-        _, doc = lint_json(XLSX, "--as-of", AS_OF)
+    def test_without_a_pack_it_lists_the_packs_and_stops(self):
+        code, out, err = run("lint", XLSX, "--as-of", AS_OF)
+        self.assertEqual(code, 2)
+        self.assertEqual(out, "")
+        self.assertIn("--pack", err)
+        for pid in P.available():
+            self.assertIn(pid, err)
+
+    def test_several_packs_by_name(self):
+        _, doc = lint_json(XLSX, "--pack", ",".join(P.available()), "--as-of", AS_OF)
         self.assertEqual([p["id"] for p in doc["packs"]], P.available())
+
+    def test_a_version_column_is_not_a_trade_name(self):
+        # 20 Oct: "version" sat among the Annex VIII A item 4 synonyms, so a plain Version column was taken for the
+        # trade name. Removed in the research data; this keeps it out.
+        pack = P.load_many(["eu-aia-annex8-a"])[0]
+        trade = [f for f in pack.fields if f.id == "trade_name_reference"][0]
+        self.assertNotIn("version", [s.lower() for s in trade.synonyms])
 
     def test_packs_command(self):
         code, out, _ = run("packs")
@@ -222,7 +234,7 @@ class Safety(unittest.TestCase):
         shutil.copyfile(XLSX, reg)
         os.chmod(reg, stat.S_IREAD)
         before = (sha(reg), os.stat(reg).st_mtime_ns)
-        code, _, _ = run("lint", reg, "--as-of", AS_OF, "--json", os.path.join(self.tmp, "findings.json"))
+        code, _, _ = run("lint", reg, "--pack", "osfi-e23", "--as-of", AS_OF, "--json", os.path.join(self.tmp, "findings.json"))
         self.assertEqual(code, 1)
         self.assertEqual((sha(reg), os.stat(reg).st_mtime_ns), before)
         self.assertEqual(sorted(os.listdir(self.tmp)), ["findings.json", "register.xlsx"])
@@ -231,7 +243,7 @@ class Safety(unittest.TestCase):
         reg = os.path.join(self.tmp, "register.xlsx")
         shutil.copyfile(XLSX, reg)
         before = sha(reg)
-        code, _, err = run("lint", reg, "--json", reg)
+        code, _, err = run("lint", reg, "--pack", "osfi-e23", "--json", reg)
         self.assertEqual(code, 2)
         self.assertIn("never writes to the register", err)
         self.assertEqual(sha(reg), before)
@@ -242,7 +254,7 @@ class Safety(unittest.TestCase):
 
         with mock.patch("socket.socket", side_effect=refuse), mock.patch("socket.create_connection", refuse), \
                 mock.patch("socket.getaddrinfo", refuse):
-            code, out, _ = run("lint", XLSX, "--as-of", AS_OF)
+            code, out, _ = run("lint", XLSX, "--pack", "osfi-e23", "--as-of", AS_OF)
         self.assertEqual(code, 1)
         self.assertIn(CLOSING, out)
 
@@ -257,12 +269,12 @@ class Safety(unittest.TestCase):
         old = os.path.join(self.tmp, "old.xls")
         open(old, "wb").close()
         cases = [
-            (["lint", os.path.join(self.tmp, "absent.xlsx")], "cannot read"),
-            (["lint", old], "Excel 97-2003"),
-            (["lint", XLSX, "--as-of", "19/10/2026"], "YYYY-MM-DD"),
-            (["lint", XLSX, "--sheet", "Nowhere"], "no sheet named"),
+            (["lint", os.path.join(self.tmp, "absent.xlsx"), "--pack", "osfi-e23"], "cannot read"),
+            (["lint", old, "--pack", "osfi-e23"], "Excel 97-2003"),
+            (["lint", XLSX, "--pack", "osfi-e23", "--as-of", "19/10/2026"], "YYYY-MM-DD"),
+            (["lint", XLSX, "--pack", "osfi-e23", "--sheet", "Nowhere"], "no sheet named"),
             (["lint", XLSX, "--pack", "naic-ai-bulletin"], "unknown pack"),
-            (["lint", XLSX, "--grace-days", "-1"], "cannot be negative"),
+            (["lint", XLSX, "--pack", "osfi-e23", "--grace-days", "-1"], "cannot be negative"),
         ]
         for args, said in cases:
             code, _, err = run(*args)

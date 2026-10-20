@@ -1,0 +1,1050 @@
+{
+ "format": "governanceos-pack/1",
+ "pack_id": "nebula-mutual-2026Q3",
+ "institution": "Nebula Mutual",
+ "issued_by": "The CISO, Nebula Mutual (a fictional institution)",
+ "created": "2026-10-16T10:12:00-05:00",
+ "period": "2026-07-01 to 2026-09-30",
+ "notice": "Prototype sample. Nebula Mutual is a fictional institution constructed for illustration; any resemblance to a real organization is unintended. People are shown as roles. Signed with a prototype test key that signs nothing real.",
+ "cover_note": "This pack covers the third quarter, 2026-07-01 to 2026-09-30. The customer assistant's vendor changed its model on 2026-10-15, after this period: that change, chg-0014, belongs to the fourth-quarter pack.",
+ "key_id": "nm-pack-01 (prototype test key)",
+ "public_key": "286b323de6ff9f0cd18412eb9a887bcef2d01567c0d703c6a2565bf180c2a214",
+ "segment_start_prev_hash": "f020807760fa149e9ae8d2c0b101cbfc7ef8c075f814d9eabacd67796293fd90",
+ "head": "2bb3a4f271d74a906c1a507a918313f67a3ca88bd2c2edc84b4b5a4a853bcf9f",
+ "records": [
+  {
+   "position": 289,
+   "prev_hash": "f020807760fa149e9ae8d2c0b101cbfc7ef8c075f814d9eabacd67796293fd90",
+   "hash": "e2511190262652e1cb37068cf1a6f7af6257b8e0d75465f3a9bfa49e29a66457",
+   "record": {
+    "type": "evidence",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G3",
+    "attached": "2026-07-17",
+    "attached_by_role": "Actuary",
+    "sha256": "61720fdd63693af61b5003e8fbed5416b6e112c4cad42b559668f04ab8c9ba81"
+   }
+  },
+  {
+   "position": 290,
+   "prev_hash": "e2511190262652e1cb37068cf1a6f7af6257b8e0d75465f3a9bfa49e29a66457",
+   "hash": "c9db3304011bf3f43d4dcccedabea63dd4f763617efc3327e04c21438733d3f5",
+   "record": {
+    "type": "gate",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G3",
+    "state": "passed",
+    "effective": "2026-07-19",
+    "approver_role": "CRO",
+    "signing_key": "cro-nm-01",
+    "signed_at": "2026-07-19 12:14 CT",
+    "token": "GT-2026-0318",
+    "evidence": [
+     "61720fdd63693af61b5003e8fbed5416b6e112c4cad42b559668f04ab8c9ba81"
+    ]
+   }
+  },
+  {
+   "position": 291,
+   "prev_hash": "c9db3304011bf3f43d4dcccedabea63dd4f763617efc3327e04c21438733d3f5",
+   "hash": "d976a8cf67cd2ecf02bb46e13383d09713fd91adcf8edf7c217181330965c0f0",
+   "record": {
+    "type": "evidence",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G2",
+    "attached": "2026-07-26",
+    "attached_by_role": "Validator",
+    "sha256": "5a1d9343c1d18c10671439a5ff01eec178833135b24e3dfe1476eb7e41244b18"
+   }
+  },
+  {
+   "position": 292,
+   "prev_hash": "d976a8cf67cd2ecf02bb46e13383d09713fd91adcf8edf7c217181330965c0f0",
+   "hash": "e0c75041da0b3cf0a3a74599b184c3504d94d58abe7134c6bbcb6178818ff718",
+   "record": {
+    "type": "gate",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G2",
+    "state": "passed",
+    "effective": "2026-07-28",
+    "approver_role": "Validator",
+    "signing_key": "val-nm-01",
+    "signed_at": "2026-07-28 13:48 CT",
+    "token": "GT-2026-0326",
+    "evidence": [
+     "5a1d9343c1d18c10671439a5ff01eec178833135b24e3dfe1476eb7e41244b18"
+    ]
+   }
+  },
+  {
+   "position": 293,
+   "prev_hash": "e0c75041da0b3cf0a3a74599b184c3504d94d58abe7134c6bbcb6178818ff718",
+   "hash": "339074c8502f9411e282dbc6012649e79352886a3fa3092bb4dc29c8c4756032",
+   "record": {
+    "type": "vendor",
+    "vendor": "Meridian Language Systems",
+    "system": "nebula-mutual/customer-assistant",
+    "record": "contract amendment 2",
+    "approved_by_role": "Procurement lead",
+    "note": "model-change notice declined by the vendor",
+    "at": "2026-08-04"
+   }
+  },
+  {
+   "position": 294,
+   "prev_hash": "339074c8502f9411e282dbc6012649e79352886a3fa3092bb4dc29c8c4756032",
+   "hash": "e8ef95b2cf0f4b036f8afffbda2ab34f10a641224b113dca371c3acd43c5cec5",
+   "record": {
+    "type": "evidence",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G3",
+    "attached": "2026-08-12",
+    "attached_by_role": "Actuary",
+    "sha256": "6c2f08abc82b081b6eaa8a0346a50b5a808de892ed8ffb95cd233b8e769a3431"
+   }
+  },
+  {
+   "position": 295,
+   "prev_hash": "e8ef95b2cf0f4b036f8afffbda2ab34f10a641224b113dca371c3acd43c5cec5",
+   "hash": "68d84f4cde16d3ad8dc0da88b0da12171cc20e23ca1eef70b2602e13894f309d",
+   "record": {
+    "type": "gate",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G3",
+    "state": "passed",
+    "effective": "2026-08-14",
+    "approver_role": "CRO",
+    "signing_key": "cro-nm-01",
+    "signed_at": "2026-08-14 12:56 CT",
+    "token": "GT-2026-0338",
+    "evidence": [
+     "6c2f08abc82b081b6eaa8a0346a50b5a808de892ed8ffb95cd233b8e769a3431"
+    ]
+   }
+  },
+  {
+   "position": 296,
+   "prev_hash": "68d84f4cde16d3ad8dc0da88b0da12171cc20e23ca1eef70b2602e13894f309d",
+   "hash": "e5c502369c1ad538403571278d819eaa6ec5606b6478f4ba2c0d056a45020364",
+   "record": {
+    "type": "evidence",
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G2",
+    "attached": "2026-08-19",
+    "attached_by_role": "Validator",
+    "sha256": "a2c6f01dbf6161db26baadfd4fb1b33365c90ab9039bc306f3ce3be218a51725"
+   }
+  },
+  {
+   "position": 297,
+   "prev_hash": "e5c502369c1ad538403571278d819eaa6ec5606b6478f4ba2c0d056a45020364",
+   "hash": "fa689567cfbb2d2e8b9378d2e4b394e4f091b621c0951b5c94f1a430f1ed922d",
+   "record": {
+    "type": "gate",
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G2",
+    "state": "passed",
+    "effective": "2026-08-21",
+    "approver_role": "Validator",
+    "signing_key": "val-nm-01",
+    "signed_at": "2026-08-21 13:04 CT",
+    "token": "GT-2026-0344",
+    "evidence": [
+     "a2c6f01dbf6161db26baadfd4fb1b33365c90ab9039bc306f3ce3be218a51725"
+    ]
+   }
+  },
+  {
+   "position": 298,
+   "prev_hash": "fa689567cfbb2d2e8b9378d2e4b394e4f091b621c0951b5c94f1a430f1ed922d",
+   "hash": "425b9ccaa6fb5f6a3ab2bbe0e242917b43b9571768bf336a9b881341e6b04279",
+   "record": {
+    "type": "evidence",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G4",
+    "attached": "2026-08-28",
+    "attached_by_role": "Actuary",
+    "sha256": "7e4b191c1e9a3304746655d6e6a8369beb03df00348f9b0e6cd6ff67161edcb1"
+   }
+  },
+  {
+   "position": 299,
+   "prev_hash": "425b9ccaa6fb5f6a3ab2bbe0e242917b43b9571768bf336a9b881341e6b04279",
+   "hash": "594bbe6d93d5bde58422e7596a8384284486605adc8e19bebe09c09cd0bd91d1",
+   "record": {
+    "type": "gate",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G4",
+    "state": "passed",
+    "effective": "2026-08-30",
+    "approver_role": "Head of claims",
+    "signing_key": "cro-nm-01",
+    "signed_at": "2026-08-30 12:48 CT",
+    "token": "GT-2026-0355",
+    "evidence": [
+     "7e4b191c1e9a3304746655d6e6a8369beb03df00348f9b0e6cd6ff67161edcb1"
+    ]
+   }
+  },
+  {
+   "position": 300,
+   "prev_hash": "594bbe6d93d5bde58422e7596a8384284486605adc8e19bebe09c09cd0bd91d1",
+   "hash": "5e878f6f48e507ab139f7e8ddeaf18b56542509b99b774c8af5477e1fcc0a749",
+   "record": {
+    "type": "gate",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G5",
+    "state": "in operation",
+    "effective": "2026-08-30",
+    "approver_role": "Actuary",
+    "signing_key": "act-nm-01",
+    "signed_at": "2026-08-30 16:58 CT",
+    "token": "GT-2026-0356",
+    "evidence": [
+     "8f0c2ae6380009a56a9a83d2dbcb18cc229b9e3046bb6ac885f9ee1f04ea435f"
+    ]
+   }
+  },
+  {
+   "position": 301,
+   "prev_hash": "5e878f6f48e507ab139f7e8ddeaf18b56542509b99b774c8af5477e1fcc0a749",
+   "hash": "5578a64264652620ce0cb704d4f1b22a5c4185e5f5a71b6cefd444120383ce14",
+   "record": {
+    "type": "evidence",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G4",
+    "attached": "2026-08-31",
+    "attached_by_role": "Actuary",
+    "sha256": "52e4b24fa803b96452f12e54b51de3a8d7916e8d105cdf0a53033c235ebd7927"
+   }
+  },
+  {
+   "position": 302,
+   "prev_hash": "5578a64264652620ce0cb704d4f1b22a5c4185e5f5a71b6cefd444120383ce14",
+   "hash": "452f67a7f6f702748dcdc5d3a11b2032a321f9f64982f570259c72cef2949cbf",
+   "record": {
+    "type": "gate",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G4",
+    "state": "passed with condition",
+    "effective": "2026-09-02",
+    "approver_role": "CRO",
+    "signing_key": "cro-nm-01",
+    "signed_at": "2026-09-02 14:12 CT",
+    "token": "GT-2026-0362",
+    "evidence": [
+     "52e4b24fa803b96452f12e54b51de3a8d7916e8d105cdf0a53033c235ebd7927"
+    ],
+    "condition": {
+     "text": "re-validate on vendor model change",
+     "owner_role": "Actuary (model owner)",
+     "typed": true
+    }
+   }
+  },
+  {
+   "position": 303,
+   "prev_hash": "452f67a7f6f702748dcdc5d3a11b2032a321f9f64982f570259c72cef2949cbf",
+   "hash": "1bad5f264ee401530950513c6df63048161fbcd857d7c93102515779661d711a",
+   "record": {
+    "type": "gate",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G5",
+    "state": "in operation",
+    "effective": "2026-09-02",
+    "approver_role": "Actuary",
+    "signing_key": "act-nm-01",
+    "signed_at": "2026-09-02 14:24 CT",
+    "token": "GT-2026-0363",
+    "evidence": [
+     "1172f042b67f2fe441787ae8bdde39c9acab44c7c5e32483076b975aa6301709"
+    ]
+   }
+  },
+  {
+   "position": 304,
+   "prev_hash": "1bad5f264ee401530950513c6df63048161fbcd857d7c93102515779661d711a",
+   "hash": "aaf6632f043c3a6fe7875d0c96ba003e4366b3ac30768b7670d9bf57b2066fdd",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "week_from": "2026-08-30",
+    "week_to": "2026-09-05",
+    "receipt": "9cf2a1017cb8c5e26321ad2bdd5084f1e2edfe877a8eabf876d0cf9afd5b15e5"
+   }
+  },
+  {
+   "position": 305,
+   "prev_hash": "aaf6632f043c3a6fe7875d0c96ba003e4366b3ac30768b7670d9bf57b2066fdd",
+   "hash": "fa8ff6612ca9c436470e99499066c8d69bae0d220ce8971bedfd8ec313020316",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "week_from": "2026-09-02",
+    "week_to": "2026-09-08",
+    "receipt": "2be76ae3703fcd7e135ec391c79242fa8f3e6493c3a0cc2d23720f6af0fdefd1"
+   }
+  },
+  {
+   "position": 306,
+   "prev_hash": "fa8ff6612ca9c436470e99499066c8d69bae0d220ce8971bedfd8ec313020316",
+   "hash": "03209be757bc8e8e595bd9cb7e01c5493833b92413cfcf6730e3ea75c974e12a",
+   "record": {
+    "type": "evidence",
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G3",
+    "attached": "2026-09-10",
+    "attached_by_role": "Actuary",
+    "sha256": "b3e801a0c54134edfd58c0786de66e97dbb54b68a330e3aae6f7dc55a140b43a"
+   }
+  },
+  {
+   "position": 307,
+   "prev_hash": "03209be757bc8e8e595bd9cb7e01c5493833b92413cfcf6730e3ea75c974e12a",
+   "hash": "431d164015b21a367a4c745fe10ebdcb2da0f28d055c07e05e0936628df24abd",
+   "record": {
+    "type": "gate",
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G3",
+    "state": "passed with condition",
+    "effective": "2026-09-12",
+    "approver_role": "CRO",
+    "signing_key": "cro-nm-01",
+    "signed_at": "2026-09-12 15:20 CT",
+    "token": "GT-2026-0371",
+    "evidence": [
+     "b3e801a0c54134edfd58c0786de66e97dbb54b68a330e3aae6f7dc55a140b43a"
+    ],
+    "condition": {
+     "text": "Attach the vendor model card from Corvane before G4.",
+     "owner_role": "Actuary (model owner)",
+     "typed": true
+    }
+   }
+  },
+  {
+   "position": 308,
+   "prev_hash": "431d164015b21a367a4c745fe10ebdcb2da0f28d055c07e05e0936628df24abd",
+   "hash": "4925d7f18d2a33c44d9dd37ebcb3b70e84573503457c8b610185382753c49304",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "week_from": "2026-09-06",
+    "week_to": "2026-09-12",
+    "receipt": "29b476f7f7d5d8371b90e67e1c9c2c3377e457eaa6fe90a781dbd404fe4508c7"
+   }
+  },
+  {
+   "position": 309,
+   "prev_hash": "4925d7f18d2a33c44d9dd37ebcb3b70e84573503457c8b610185382753c49304",
+   "hash": "f9fc4cc9365e0c269f1f6e6567069a496070ad56d0e89073db280564fa96901c",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "week_from": "2026-09-09",
+    "week_to": "2026-09-15",
+    "receipt": "d76d20d6968933da1d726717764506d5d568af6953610be45c6b8cbd89dc0d0c"
+   }
+  },
+  {
+   "position": 310,
+   "prev_hash": "f9fc4cc9365e0c269f1f6e6567069a496070ad56d0e89073db280564fa96901c",
+   "hash": "c55c9def5b75101eb7ecb8e6c01a3f95daa96d192e663ecbc9d2fd71c9a072cb",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "week_from": "2026-09-13",
+    "week_to": "2026-09-19",
+    "receipt": "0e12f778b372ef94c00c83a57a38e6cb2c80aaa1989f874ec4ac0caab9487310"
+   }
+  },
+  {
+   "position": 311,
+   "prev_hash": "c55c9def5b75101eb7ecb8e6c01a3f95daa96d192e663ecbc9d2fd71c9a072cb",
+   "hash": "c4b1cf7b8e002116685d7f26ec47d131a46cd1286324c428e8ca754f043e1a15",
+   "record": {
+    "type": "event",
+    "event": "chg-0008",
+    "system": "nebula-mutual/customer-assistant",
+    "step": "rolled back to the G4 configuration",
+    "at": "2026-09-21"
+   }
+  },
+  {
+   "position": 312,
+   "prev_hash": "c4b1cf7b8e002116685d7f26ec47d131a46cd1286324c428e8ca754f043e1a15",
+   "hash": "72489b6b7555547efcc787dfded50c20c3242ccb99a8c5da71581f376f5cf920",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "week_from": "2026-09-16",
+    "week_to": "2026-09-22",
+    "receipt": "2446947139ded770fd3ccc520500b8c9d4484a2f427c4b2a3e4b61bf4e748575"
+   }
+  },
+  {
+   "position": 313,
+   "prev_hash": "72489b6b7555547efcc787dfded50c20c3242ccb99a8c5da71581f376f5cf920",
+   "hash": "bf9ae223fc981c8da78e17002ab8619a6069d6867d779d6b7303746ea6c73687",
+   "record": {
+    "type": "event",
+    "event": "chg-0008",
+    "system": "nebula-mutual/customer-assistant",
+    "step": "deploy test added: a template edit without a G4 is refused at deploy",
+    "at": "2026-09-23"
+   }
+  },
+  {
+   "position": 314,
+   "prev_hash": "bf9ae223fc981c8da78e17002ab8619a6069d6867d779d6b7303746ea6c73687",
+   "hash": "b93c161d4fe0ff5844f5ed731801f7af5206f0d3fa9a7864383d24d6d95ded58",
+   "record": {
+    "type": "event",
+    "event": "chg-0008",
+    "system": "nebula-mutual/customer-assistant",
+    "step": "closed",
+    "closed_by_role": "CRO",
+    "signing_key": "cro-nm-01",
+    "token": "GT-2026-0379",
+    "reconstruction": "212 calls under the edited template; none outside the tool authorization record",
+    "evidence": [
+     "3f9d20c1b7e4e833653d907fdf7c93bd3ba01dcf29ed020049baa6bd590657a2"
+    ],
+    "at": "2026-09-24"
+   }
+  },
+  {
+   "position": 315,
+   "prev_hash": "b93c161d4fe0ff5844f5ed731801f7af5206f0d3fa9a7864383d24d6d95ded58",
+   "hash": "b0d4cfa8226282c2571079094baca635bf01393f8a29aa30758a5b568c2eb6b6",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "week_from": "2026-09-20",
+    "week_to": "2026-09-26",
+    "receipt": "aadfc86d4ad508a0c2fc90ad54f881cd45fcaffa8e3753283cf055a4fa8e79bc"
+   }
+  },
+  {
+   "position": 316,
+   "prev_hash": "b0d4cfa8226282c2571079094baca635bf01393f8a29aa30758a5b568c2eb6b6",
+   "hash": "310eb128d39123ea0230e8f54c623ccdedf60e910caeea11a5a14e4ffabc2cf3",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "week_from": "2026-09-23",
+    "week_to": "2026-09-29",
+    "receipt": "1105195fa6f295c3094aa592321fe06cc7aba97e2b943f5cd0d9613ae7c0b1f6"
+   }
+  },
+  {
+   "position": 317,
+   "prev_hash": "310eb128d39123ea0230e8f54c623ccdedf60e910caeea11a5a14e4ffabc2cf3",
+   "hash": "e1eb7bcf1a20bafc5282c127ee569558942e9863b1968b19072dc6dd5f29281e",
+   "record": {
+    "type": "intake",
+    "intake": "int-0008",
+    "title": "Group claims routing",
+    "requested_by_role": "Business line head, Group benefits",
+    "ticket": "NM-REQ-2240",
+    "at": "2026-09-29"
+   }
+  },
+  {
+   "position": 318,
+   "prev_hash": "e1eb7bcf1a20bafc5282c127ee569558942e9863b1968b19072dc6dd5f29281e",
+   "hash": "ef0efe0eadd22cad431fcb6067a6f0a5cfcda257ca25b314ad2c4787c93c9736",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "week_from": "2026-09-27",
+    "week_to": "2026-09-30",
+    "receipt": "35489f54cdb58ad86ba40895d83b149c822035b464b6fa19005da1ed18f17470"
+   }
+  },
+  {
+   "position": 319,
+   "prev_hash": "ef0efe0eadd22cad431fcb6067a6f0a5cfcda257ca25b314ad2c4787c93c9736",
+   "hash": "2bb3a4f271d74a906c1a507a918313f67a3ca88bd2c2edc84b4b5a4a853bcf9f",
+   "record": {
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "week_from": "2026-09-30",
+    "week_to": "2026-09-30",
+    "receipt": "44d70cfe9509057646a2f448b4ba1118ba86b792a9131a54f1701935f62d08cb"
+   }
+  }
+ ],
+ "derived_note": "board_summary, flat and flat_csv are derived from the records and signed with them: recompute them from the records to check them. anchors and verifier are outside the signature: the anchors are checked online, and the verifier by its own SHA-256 in SHA256SUMS.txt.",
+ "board_summary": {
+  "as_of": "2026-09-30",
+  "systems": [
+   {
+    "system": "nebula-mutual/customer-assistant",
+    "name": "Customer assistant",
+    "tier": 1,
+    "standing": "in operation since 2026-09-02"
+   },
+   {
+    "system": "nebula-mutual/pricing-model-v3",
+    "name": "Pricing model v3",
+    "tier": 3,
+    "standing": "G2 passed 2026-06-05"
+   },
+   {
+    "system": "nebula-mutual/document-ocr",
+    "name": "Document OCR",
+    "tier": 1,
+    "standing": "in operation since 2025-11-11"
+   },
+   {
+    "system": "nebula-mutual/claims-routing",
+    "name": "Claims routing",
+    "tier": 2,
+    "standing": "in operation since 2026-08-30"
+   },
+   {
+    "system": "nebula-mutual/underwriting-triage",
+    "name": "Underwriting triage",
+    "tier": 2,
+    "standing": "G3 passed 2026-09-12"
+   },
+   {
+    "system": "nebula-mutual/fraud-flags",
+    "name": "Fraud flags",
+    "tier": 2,
+    "standing": "retired at G5"
+   }
+  ],
+  "gates_signed_in_period": [
+   {
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G3",
+    "state": "passed",
+    "effective": "2026-07-19",
+    "approver_role": "CRO",
+    "token": "GT-2026-0318"
+   },
+   {
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G2",
+    "state": "passed",
+    "effective": "2026-07-28",
+    "approver_role": "Validator",
+    "token": "GT-2026-0326"
+   },
+   {
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G3",
+    "state": "passed",
+    "effective": "2026-08-14",
+    "approver_role": "CRO",
+    "token": "GT-2026-0338"
+   },
+   {
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G2",
+    "state": "passed",
+    "effective": "2026-08-21",
+    "approver_role": "Validator",
+    "token": "GT-2026-0344"
+   },
+   {
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G4",
+    "state": "passed",
+    "effective": "2026-08-30",
+    "approver_role": "CRO",
+    "token": "GT-2026-0355"
+   },
+   {
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G5",
+    "state": "in operation",
+    "effective": "2026-08-30",
+    "approver_role": "Actuary",
+    "token": "GT-2026-0356"
+   },
+   {
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G4",
+    "state": "passed with condition",
+    "effective": "2026-09-02",
+    "approver_role": "CRO",
+    "token": "GT-2026-0362"
+   },
+   {
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G5",
+    "state": "in operation",
+    "effective": "2026-09-02",
+    "approver_role": "Actuary",
+    "token": "GT-2026-0363"
+   },
+   {
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G3",
+    "state": "passed with condition",
+    "effective": "2026-09-12",
+    "approver_role": "CRO",
+    "token": "GT-2026-0371"
+   }
+  ],
+  "signatures_by_role": {
+   "CRO": 5,
+   "Validator": 2,
+   "Actuary": 2
+  },
+  "conditions_set_in_period": [
+   {
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G4",
+    "condition": "re-validate on vendor model change",
+    "owner_role": "Actuary (model owner)"
+   },
+   {
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G3",
+    "condition": "Attach the vendor model card from Corvane before G4.",
+    "owner_role": "Actuary (model owner)"
+   }
+  ],
+  "re_assertions_lapsed": [
+   {
+    "system": "nebula-mutual/document-ocr",
+    "re_assertion_due": "2026-05-11"
+   }
+  ],
+  "re_assertion_interval_not_set": []
+ },
+ "flat": {
+  "dictionary": {
+   "position": "the record's place in Nebula Mutual's chain",
+   "type": "gate, evidence, declaration, vendor, event or intake",
+   "system": "the AI system the record is about",
+   "gate": "G1 to G5, for gate and evidence records",
+   "state": "where the gate stands, as signed",
+   "date": "the effective, attached, week-ending or event date",
+   "role": "the role that signed, attached or requested the record",
+   "signing_key": "the key the role signed with",
+   "token": "the approval token issued with the signature",
+   "evidence_sha256": "the SHA-256 of the evidence the record names",
+   "record_sha256": "the SHA-256 that chains this record to the previous one"
+  },
+  "rows": [
+   {
+    "position": 289,
+    "type": "evidence",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G3",
+    "state": "",
+    "date": "2026-07-17",
+    "role": "Actuary",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "61720fdd63693af61b5003e8fbed5416b6e112c4cad42b559668f04ab8c9ba81",
+    "record_sha256": "e2511190262652e1cb37068cf1a6f7af6257b8e0d75465f3a9bfa49e29a66457"
+   },
+   {
+    "position": 290,
+    "type": "gate",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G3",
+    "state": "passed",
+    "date": "2026-07-19",
+    "role": "CRO",
+    "signing_key": "cro-nm-01",
+    "token": "GT-2026-0318",
+    "evidence_sha256": "61720fdd63693af61b5003e8fbed5416b6e112c4cad42b559668f04ab8c9ba81",
+    "record_sha256": "c9db3304011bf3f43d4dcccedabea63dd4f763617efc3327e04c21438733d3f5"
+   },
+   {
+    "position": 291,
+    "type": "evidence",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G2",
+    "state": "",
+    "date": "2026-07-26",
+    "role": "Validator",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "5a1d9343c1d18c10671439a5ff01eec178833135b24e3dfe1476eb7e41244b18",
+    "record_sha256": "d976a8cf67cd2ecf02bb46e13383d09713fd91adcf8edf7c217181330965c0f0"
+   },
+   {
+    "position": 292,
+    "type": "gate",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G2",
+    "state": "passed",
+    "date": "2026-07-28",
+    "role": "Validator",
+    "signing_key": "val-nm-01",
+    "token": "GT-2026-0326",
+    "evidence_sha256": "5a1d9343c1d18c10671439a5ff01eec178833135b24e3dfe1476eb7e41244b18",
+    "record_sha256": "e0c75041da0b3cf0a3a74599b184c3504d94d58abe7134c6bbcb6178818ff718"
+   },
+   {
+    "position": 293,
+    "type": "vendor",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "",
+    "state": "",
+    "date": "2026-08-04",
+    "role": "Procurement lead",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "339074c8502f9411e282dbc6012649e79352886a3fa3092bb4dc29c8c4756032"
+   },
+   {
+    "position": 294,
+    "type": "evidence",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G3",
+    "state": "",
+    "date": "2026-08-12",
+    "role": "Actuary",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "6c2f08abc82b081b6eaa8a0346a50b5a808de892ed8ffb95cd233b8e769a3431",
+    "record_sha256": "e8ef95b2cf0f4b036f8afffbda2ab34f10a641224b113dca371c3acd43c5cec5"
+   },
+   {
+    "position": 295,
+    "type": "gate",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G3",
+    "state": "passed",
+    "date": "2026-08-14",
+    "role": "CRO",
+    "signing_key": "cro-nm-01",
+    "token": "GT-2026-0338",
+    "evidence_sha256": "6c2f08abc82b081b6eaa8a0346a50b5a808de892ed8ffb95cd233b8e769a3431",
+    "record_sha256": "68d84f4cde16d3ad8dc0da88b0da12171cc20e23ca1eef70b2602e13894f309d"
+   },
+   {
+    "position": 296,
+    "type": "evidence",
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G2",
+    "state": "",
+    "date": "2026-08-19",
+    "role": "Validator",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "a2c6f01dbf6161db26baadfd4fb1b33365c90ab9039bc306f3ce3be218a51725",
+    "record_sha256": "e5c502369c1ad538403571278d819eaa6ec5606b6478f4ba2c0d056a45020364"
+   },
+   {
+    "position": 297,
+    "type": "gate",
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G2",
+    "state": "passed",
+    "date": "2026-08-21",
+    "role": "Validator",
+    "signing_key": "val-nm-01",
+    "token": "GT-2026-0344",
+    "evidence_sha256": "a2c6f01dbf6161db26baadfd4fb1b33365c90ab9039bc306f3ce3be218a51725",
+    "record_sha256": "fa689567cfbb2d2e8b9378d2e4b394e4f091b621c0951b5c94f1a430f1ed922d"
+   },
+   {
+    "position": 298,
+    "type": "evidence",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G4",
+    "state": "",
+    "date": "2026-08-28",
+    "role": "Actuary",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "7e4b191c1e9a3304746655d6e6a8369beb03df00348f9b0e6cd6ff67161edcb1",
+    "record_sha256": "425b9ccaa6fb5f6a3ab2bbe0e242917b43b9571768bf336a9b881341e6b04279"
+   },
+   {
+    "position": 299,
+    "type": "gate",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G4",
+    "state": "passed",
+    "date": "2026-08-30",
+    "role": "CRO",
+    "signing_key": "cro-nm-01",
+    "token": "GT-2026-0355",
+    "evidence_sha256": "7e4b191c1e9a3304746655d6e6a8369beb03df00348f9b0e6cd6ff67161edcb1",
+    "record_sha256": "594bbe6d93d5bde58422e7596a8384284486605adc8e19bebe09c09cd0bd91d1"
+   },
+   {
+    "position": 300,
+    "type": "gate",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "G5",
+    "state": "in operation",
+    "date": "2026-08-30",
+    "role": "Actuary",
+    "signing_key": "act-nm-01",
+    "token": "GT-2026-0356",
+    "evidence_sha256": "8f0c2ae6380009a56a9a83d2dbcb18cc229b9e3046bb6ac885f9ee1f04ea435f",
+    "record_sha256": "5e878f6f48e507ab139f7e8ddeaf18b56542509b99b774c8af5477e1fcc0a749"
+   },
+   {
+    "position": 301,
+    "type": "evidence",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G4",
+    "state": "",
+    "date": "2026-08-31",
+    "role": "Actuary",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "52e4b24fa803b96452f12e54b51de3a8d7916e8d105cdf0a53033c235ebd7927",
+    "record_sha256": "5578a64264652620ce0cb704d4f1b22a5c4185e5f5a71b6cefd444120383ce14"
+   },
+   {
+    "position": 302,
+    "type": "gate",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G4",
+    "state": "passed with condition",
+    "date": "2026-09-02",
+    "role": "CRO",
+    "signing_key": "cro-nm-01",
+    "token": "GT-2026-0362",
+    "evidence_sha256": "52e4b24fa803b96452f12e54b51de3a8d7916e8d105cdf0a53033c235ebd7927",
+    "record_sha256": "452f67a7f6f702748dcdc5d3a11b2032a321f9f64982f570259c72cef2949cbf"
+   },
+   {
+    "position": 303,
+    "type": "gate",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "G5",
+    "state": "in operation",
+    "date": "2026-09-02",
+    "role": "Actuary",
+    "signing_key": "act-nm-01",
+    "token": "GT-2026-0363",
+    "evidence_sha256": "1172f042b67f2fe441787ae8bdde39c9acab44c7c5e32483076b975aa6301709",
+    "record_sha256": "1bad5f264ee401530950513c6df63048161fbcd857d7c93102515779661d711a"
+   },
+   {
+    "position": 304,
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-05",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "aaf6632f043c3a6fe7875d0c96ba003e4366b3ac30768b7670d9bf57b2066fdd"
+   },
+   {
+    "position": 305,
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-08",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "fa8ff6612ca9c436470e99499066c8d69bae0d220ce8971bedfd8ec313020316"
+   },
+   {
+    "position": 306,
+    "type": "evidence",
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G3",
+    "state": "",
+    "date": "2026-09-10",
+    "role": "Actuary",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "b3e801a0c54134edfd58c0786de66e97dbb54b68a330e3aae6f7dc55a140b43a",
+    "record_sha256": "03209be757bc8e8e595bd9cb7e01c5493833b92413cfcf6730e3ea75c974e12a"
+   },
+   {
+    "position": 307,
+    "type": "gate",
+    "system": "nebula-mutual/underwriting-triage",
+    "gate": "G3",
+    "state": "passed with condition",
+    "date": "2026-09-12",
+    "role": "CRO",
+    "signing_key": "cro-nm-01",
+    "token": "GT-2026-0371",
+    "evidence_sha256": "b3e801a0c54134edfd58c0786de66e97dbb54b68a330e3aae6f7dc55a140b43a",
+    "record_sha256": "431d164015b21a367a4c745fe10ebdcb2da0f28d055c07e05e0936628df24abd"
+   },
+   {
+    "position": 308,
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-12",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "4925d7f18d2a33c44d9dd37ebcb3b70e84573503457c8b610185382753c49304"
+   },
+   {
+    "position": 309,
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-15",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "f9fc4cc9365e0c269f1f6e6567069a496070ad56d0e89073db280564fa96901c"
+   },
+   {
+    "position": 310,
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-19",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "c55c9def5b75101eb7ecb8e6c01a3f95daa96d192e663ecbc9d2fd71c9a072cb"
+   },
+   {
+    "position": 311,
+    "type": "event",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "",
+    "state": "rolled back to the G4 configuration",
+    "date": "2026-09-21",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "c4b1cf7b8e002116685d7f26ec47d131a46cd1286324c428e8ca754f043e1a15"
+   },
+   {
+    "position": 312,
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-22",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "72489b6b7555547efcc787dfded50c20c3242ccb99a8c5da71581f376f5cf920"
+   },
+   {
+    "position": 313,
+    "type": "event",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "",
+    "state": "deploy test added: a template edit without a G4 is refused at deploy",
+    "date": "2026-09-23",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "bf9ae223fc981c8da78e17002ab8619a6069d6867d779d6b7303746ea6c73687"
+   },
+   {
+    "position": 314,
+    "type": "event",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "",
+    "state": "closed",
+    "date": "2026-09-24",
+    "role": "CRO",
+    "signing_key": "cro-nm-01",
+    "token": "GT-2026-0379",
+    "evidence_sha256": "3f9d20c1b7e4e833653d907fdf7c93bd3ba01dcf29ed020049baa6bd590657a2",
+    "record_sha256": "b93c161d4fe0ff5844f5ed731801f7af5206f0d3fa9a7864383d24d6d95ded58"
+   },
+   {
+    "position": 315,
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-26",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "b0d4cfa8226282c2571079094baca635bf01393f8a29aa30758a5b568c2eb6b6"
+   },
+   {
+    "position": 316,
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-29",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "310eb128d39123ea0230e8f54c623ccdedf60e910caeea11a5a14e4ffabc2cf3"
+   },
+   {
+    "position": 317,
+    "type": "intake",
+    "system": "",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-29",
+    "role": "Business line head, Group benefits",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "e1eb7bcf1a20bafc5282c127ee569558942e9863b1968b19072dc6dd5f29281e"
+   },
+   {
+    "position": 318,
+    "type": "declaration",
+    "system": "nebula-mutual/claims-routing",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-30",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "ef0efe0eadd22cad431fcb6067a6f0a5cfcda257ca25b314ad2c4787c93c9736"
+   },
+   {
+    "position": 319,
+    "type": "declaration",
+    "system": "nebula-mutual/customer-assistant",
+    "gate": "",
+    "state": "",
+    "date": "2026-09-30",
+    "role": "",
+    "signing_key": "",
+    "token": "",
+    "evidence_sha256": "",
+    "record_sha256": "2bb3a4f271d74a906c1a507a918313f67a3ca88bd2c2edc84b4b5a4a853bcf9f"
+   }
+  ]
+ },
+ "flat_csv": "position,type,system,gate,state,date,role,signing_key,token,evidence_sha256,record_sha256\n289,evidence,nebula-mutual/customer-assistant,G3,,2026-07-17,Actuary,,,61720fdd63693af61b5003e8fbed5416b6e112c4cad42b559668f04ab8c9ba81,e2511190262652e1cb37068cf1a6f7af6257b8e0d75465f3a9bfa49e29a66457\n290,gate,nebula-mutual/customer-assistant,G3,passed,2026-07-19,CRO,cro-nm-01,GT-2026-0318,61720fdd63693af61b5003e8fbed5416b6e112c4cad42b559668f04ab8c9ba81,c9db3304011bf3f43d4dcccedabea63dd4f763617efc3327e04c21438733d3f5\n291,evidence,nebula-mutual/claims-routing,G2,,2026-07-26,Validator,,,5a1d9343c1d18c10671439a5ff01eec178833135b24e3dfe1476eb7e41244b18,d976a8cf67cd2ecf02bb46e13383d09713fd91adcf8edf7c217181330965c0f0\n292,gate,nebula-mutual/claims-routing,G2,passed,2026-07-28,Validator,val-nm-01,GT-2026-0326,5a1d9343c1d18c10671439a5ff01eec178833135b24e3dfe1476eb7e41244b18,e0c75041da0b3cf0a3a74599b184c3504d94d58abe7134c6bbcb6178818ff718\n293,vendor,nebula-mutual/customer-assistant,,,2026-08-04,Procurement lead,,,,339074c8502f9411e282dbc6012649e79352886a3fa3092bb4dc29c8c4756032\n294,evidence,nebula-mutual/claims-routing,G3,,2026-08-12,Actuary,,,6c2f08abc82b081b6eaa8a0346a50b5a808de892ed8ffb95cd233b8e769a3431,e8ef95b2cf0f4b036f8afffbda2ab34f10a641224b113dca371c3acd43c5cec5\n295,gate,nebula-mutual/claims-routing,G3,passed,2026-08-14,CRO,cro-nm-01,GT-2026-0338,6c2f08abc82b081b6eaa8a0346a50b5a808de892ed8ffb95cd233b8e769a3431,68d84f4cde16d3ad8dc0da88b0da12171cc20e23ca1eef70b2602e13894f309d\n296,evidence,nebula-mutual/underwriting-triage,G2,,2026-08-19,Validator,,,a2c6f01dbf6161db26baadfd4fb1b33365c90ab9039bc306f3ce3be218a51725,e5c502369c1ad538403571278d819eaa6ec5606b6478f4ba2c0d056a45020364\n297,gate,nebula-mutual/underwriting-triage,G2,passed,2026-08-21,Validator,val-nm-01,GT-2026-0344,a2c6f01dbf6161db26baadfd4fb1b33365c90ab9039bc306f3ce3be218a51725,fa689567cfbb2d2e8b9378d2e4b394e4f091b621c0951b5c94f1a430f1ed922d\n298,evidence,nebula-mutual/claims-routing,G4,,2026-08-28,Actuary,,,7e4b191c1e9a3304746655d6e6a8369beb03df00348f9b0e6cd6ff67161edcb1,425b9ccaa6fb5f6a3ab2bbe0e242917b43b9571768bf336a9b881341e6b04279\n299,gate,nebula-mutual/claims-routing,G4,passed,2026-08-30,CRO,cro-nm-01,GT-2026-0355,7e4b191c1e9a3304746655d6e6a8369beb03df00348f9b0e6cd6ff67161edcb1,594bbe6d93d5bde58422e7596a8384284486605adc8e19bebe09c09cd0bd91d1\n300,gate,nebula-mutual/claims-routing,G5,in operation,2026-08-30,Actuary,act-nm-01,GT-2026-0356,8f0c2ae6380009a56a9a83d2dbcb18cc229b9e3046bb6ac885f9ee1f04ea435f,5e878f6f48e507ab139f7e8ddeaf18b56542509b99b774c8af5477e1fcc0a749\n301,evidence,nebula-mutual/customer-assistant,G4,,2026-08-31,Actuary,,,52e4b24fa803b96452f12e54b51de3a8d7916e8d105cdf0a53033c235ebd7927,5578a64264652620ce0cb704d4f1b22a5c4185e5f5a71b6cefd444120383ce14\n302,gate,nebula-mutual/customer-assistant,G4,passed with condition,2026-09-02,CRO,cro-nm-01,GT-2026-0362,52e4b24fa803b96452f12e54b51de3a8d7916e8d105cdf0a53033c235ebd7927,452f67a7f6f702748dcdc5d3a11b2032a321f9f64982f570259c72cef2949cbf\n303,gate,nebula-mutual/customer-assistant,G5,in operation,2026-09-02,Actuary,act-nm-01,GT-2026-0363,1172f042b67f2fe441787ae8bdde39c9acab44c7c5e32483076b975aa6301709,1bad5f264ee401530950513c6df63048161fbcd857d7c93102515779661d711a\n304,declaration,nebula-mutual/claims-routing,,,2026-09-05,,,,,aaf6632f043c3a6fe7875d0c96ba003e4366b3ac30768b7670d9bf57b2066fdd\n305,declaration,nebula-mutual/customer-assistant,,,2026-09-08,,,,,fa8ff6612ca9c436470e99499066c8d69bae0d220ce8971bedfd8ec313020316\n306,evidence,nebula-mutual/underwriting-triage,G3,,2026-09-10,Actuary,,,b3e801a0c54134edfd58c0786de66e97dbb54b68a330e3aae6f7dc55a140b43a,03209be757bc8e8e595bd9cb7e01c5493833b92413cfcf6730e3ea75c974e12a\n307,gate,nebula-mutual/underwriting-triage,G3,passed with condition,2026-09-12,CRO,cro-nm-01,GT-2026-0371,b3e801a0c54134edfd58c0786de66e97dbb54b68a330e3aae6f7dc55a140b43a,431d164015b21a367a4c745fe10ebdcb2da0f28d055c07e05e0936628df24abd\n308,declaration,nebula-mutual/claims-routing,,,2026-09-12,,,,,4925d7f18d2a33c44d9dd37ebcb3b70e84573503457c8b610185382753c49304\n309,declaration,nebula-mutual/customer-assistant,,,2026-09-15,,,,,f9fc4cc9365e0c269f1f6e6567069a496070ad56d0e89073db280564fa96901c\n310,declaration,nebula-mutual/claims-routing,,,2026-09-19,,,,,c55c9def5b75101eb7ecb8e6c01a3f95daa96d192e663ecbc9d2fd71c9a072cb\n311,event,nebula-mutual/customer-assistant,,rolled back to the G4 configuration,2026-09-21,,,,,c4b1cf7b8e002116685d7f26ec47d131a46cd1286324c428e8ca754f043e1a15\n312,declaration,nebula-mutual/customer-assistant,,,2026-09-22,,,,,72489b6b7555547efcc787dfded50c20c3242ccb99a8c5da71581f376f5cf920\n313,event,nebula-mutual/customer-assistant,,deploy test added: a template edit without a G4 is refused at deploy,2026-09-23,,,,,bf9ae223fc981c8da78e17002ab8619a6069d6867d779d6b7303746ea6c73687\n314,event,nebula-mutual/customer-assistant,,closed,2026-09-24,CRO,cro-nm-01,GT-2026-0379,3f9d20c1b7e4e833653d907fdf7c93bd3ba01dcf29ed020049baa6bd590657a2,b93c161d4fe0ff5844f5ed731801f7af5206f0d3fa9a7864383d24d6d95ded58\n315,declaration,nebula-mutual/claims-routing,,,2026-09-26,,,,,b0d4cfa8226282c2571079094baca635bf01393f8a29aa30758a5b568c2eb6b6\n316,declaration,nebula-mutual/customer-assistant,,,2026-09-29,,,,,310eb128d39123ea0230e8f54c623ccdedf60e910caeea11a5a14e4ffabc2cf3\n317,intake,,,,2026-09-29,\"Business line head, Group benefits\",,,,e1eb7bcf1a20bafc5282c127ee569558942e9863b1968b19072dc6dd5f29281e\n318,declaration,nebula-mutual/claims-routing,,,2026-09-30,,,,,ef0efe0eadd22cad431fcb6067a6f0a5cfcda257ca25b314ad2c4787c93c9736\n319,declaration,nebula-mutual/customer-assistant,,,2026-09-30,,,,,2bb3a4f271d74a906c1a507a918313f67a3ca88bd2c2edc84b4b5a4a853bcf9f\n",
+ "anchors": [],
+ "anchors_note": "Prototype: the head is not anchored with an outside operator yet; the operator and cadence are set before launch.",
+ "verifier": {
+  "name": "gos-verify.py",
+  "version": "1.2.1",
+  "license": "Apache-2.0",
+  "sha256": "9e47a9fad63ead2f7588c0809291ed0d6ed06e18341f851a78308c2c9532b543"
+ },
+ "signature": "626b1b38d0a137b1db80f11a5aa852bcb84ea602c4654c5b5a9582128cc7cd864b3e32337e4a5861e1ddadf6495ed1095a5d3969a5bb7e0e3bc58ff005ff7c04"
+}

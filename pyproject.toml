@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "governanceos"
+version = "0.1.0"
+description = "Open-source tools from GovernanceOS. First: gos-verify, the offline verifier for GovernanceOS evidence packs."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.8"
+authors = [{ name = "GovernanceOS" }]
+keywords = ["ai governance", "evidence pack", "offline verification", "ed25519", "model risk"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Financial and Insurance Industry",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Security :: Cryptography",
+]
+
+[project.urls]
+Homepage = "https://governanceos.si"
+Source = "https://github.com/GovernanceOS/governanceos"
+"Verify a pack" = "https://governanceos.si/verify"
+
+[project.scripts]
+gos-verify = "governanceos.cli:verify"
+
+[tool.setuptools.packages.find]
+where = ["src"]

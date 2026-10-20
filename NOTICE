@@ -1,0 +1,4 @@
+GovernanceOS
+Copyright 2026 GovernanceOS
+
+The Ed25519 verification in src/governanceos/verify.py follows the reference code in RFC 8032, section 6.

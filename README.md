@@ -124,4 +124,8 @@ python -m unittest discover -s tests -v
 
 ## License
 
-Apache License 2.0; see [LICENSE](LICENSE) and [NOTICE](NOTICE). The license grants no rights to the GovernanceOS name or marks (section 6).
+Apache License 2.0; see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
+The tools are open source so that practitioners can use them in banks and on other client work without license concerns. Commercial use, changes and redistribution are all allowed. Keep the copyright notice, the license and the NOTICE file with any copy, and mark the files you change. The license grants no rights to the GovernanceOS name or marks (section 6).
+
+In return, a word about GovernanceOS is appreciated: a post or a tweet that links to [governanceos.si](https://governanceos.si). It is a request, not a condition of the license.

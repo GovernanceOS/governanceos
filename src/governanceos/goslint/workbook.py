@@ -30,18 +30,29 @@ class Register(object):
         self.note = note
 
 
-def read(path):
+def _kind(path):
     name = os.path.basename(path)
     ext = os.path.splitext(path)[1].lower()
     if ext in REFUSED:
         raise SetupError("%s is %s. Save it as .xlsx or .csv, then lint that copy." % (name, REFUSED[ext]))
     if ext not in FORMATS:
         raise SetupError("%s: goslint reads .xlsx, .xlsm and .csv files." % name)
+    return name, ext
+
+
+def read(path):
+    _kind(path)
     try:
         with open(path, "rb") as f:
             data = f.read()
     except OSError as e:
         raise SetupError("cannot read %s: %s" % (path, e.strerror or e))
+    return from_bytes(path, data)
+
+
+def from_bytes(path, data):
+    """A register from bytes already in memory (goslint ui): the same reading, with nothing written to disk."""
+    name, ext = _kind(path)
     sha = hashlib.sha256(data).hexdigest()
     if FORMATS[ext] == "csv":
         sheets, note = _csv(data, name)

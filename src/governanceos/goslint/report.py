@@ -131,6 +131,14 @@ def result_line(s):
 
 REGIONS = ["Canada", "United States", "GCC, six states", "European Union", "United Kingdom", "Switzerland",
            "Asia-Pacific"]
+# The regulators a person looks for in each region, for the interactive lists and goslint ui.
+REGION_HINTS = {"Canada": "AMF, OSFI", "United States": "NIST, Colorado", "GCC, six states": "CBUAE, QCB",
+                "European Union": "ECB, ESMA, EU AI Act", "United Kingdom": "PRA", "Switzerland": "FINMA",
+                "Asia-Pacific": "Australia, China, MAS, RBI"}
+
+
+def region_label(region):
+    return "GCC" if region == "GCC, six states" else region
 
 
 def _counts(pairs):

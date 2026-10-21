@@ -460,11 +460,15 @@ class Safety(unittest.TestCase):
         self.assertIn(CLOSING, out)
 
     def test_holds_no_network_code(self):
-        net = re.compile(r"^\s*(import|from)\s+(socket|ssl|urllib|http|requests|httpx|ftplib|smtplib)\b", re.M)
+        # Only goslint ui serves a page, and only to this computer: http.server to listen, urllib.parse to read its
+        # own addresses. No module may hold a client that connects out.
+        net = re.compile(r"^\s*(?:import|from)\s+((?:socket|ssl|urllib|http|requests|httpx|ftplib|smtplib)[\w.]*)", re.M)
+        allowed = {"ui.py": {"http.server", "urllib.parse"}}
         for name in os.listdir(GOSLINT):
             if name.endswith(".py"):
                 with open(os.path.join(GOSLINT, name), encoding="utf-8") as f:
-                    self.assertIsNone(net.search(f.read()), name)
+                    found = set(net.findall(f.read()))
+                self.assertLessEqual(found, allowed.get(name, set()), name)
 
     def test_usage_errors_exit_2(self):
         old = os.path.join(self.tmp, "old.xls")

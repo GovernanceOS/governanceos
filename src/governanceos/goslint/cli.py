@@ -1,8 +1,11 @@
 """goslint lint REGISTER --pack IDS [--sheet NAME] [--as-of YYYY-MM-DD] [--grace-days N] [--json PATH|-]
 goslint packs
+goslint ui          the goslint page in your browser, served on this computer only (127.0.0.1)
+goslint             at a terminal, a question at a time (so is `goslint lint REGISTER` without --pack)
 
 Exit 0: no errors or warnings. 1: errors or warnings reported. 2: usage or setup error.
-Notes and check 4 inform; they do not change the exit code. goslint makes no network calls.
+Notes and check 4 inform; they do not change the exit code. goslint lint makes no network calls; goslint ui
+talks only to your browser on this computer. The one download is the lint extra, offered and installed only on a yes.
 """
 import argparse
 import datetime
@@ -21,12 +24,13 @@ class Result(object):
     pass
 
 
-def lint(path, pack_ids=None, sheet=None, as_of=None, grace_days=0):
-    """Run the four checks. Raises SetupError for anything that is the caller's to fix."""
+def lint(path, pack_ids=None, sheet=None, as_of=None, grace_days=0, data=None):
+    """Run the four checks. Raises SetupError for anything that is the caller's to fix. With data, the register's
+    bytes are already in memory (goslint ui) and path only names the file."""
     res = Result()
     res.packs = packs.load_many(pack_ids)
     res.all_packs = not pack_ids
-    res.register = workbook.read(path)
+    res.register = workbook.read(path) if data is None else workbook.from_bytes(path, data)
     res.layout = checks.locate(res.register, res.packs, sheet)
     res.as_of = as_of or datetime.date.today()
     res.grace_days = grace_days
@@ -46,7 +50,7 @@ def _parser():
 
     ap = argparse.ArgumentParser(prog="goslint", description=DESCRIPTION)
     ap.add_argument("--version", action="version", version="goslint %s (governanceos %s)" % (VERSION, __version__))
-    sub = ap.add_subparsers(dest="command", metavar="{lint,packs}")
+    sub = ap.add_subparsers(dest="command", metavar="{lint,packs,ui}")
     lp = sub.add_parser("lint", help="lint a register (.xlsx, .xlsm or .csv)", description=DESCRIPTION)
     lp.add_argument("register", help="the register file")
     lp.add_argument("--pack", help="comma-separated pack ids, required; 'goslint packs' lists them")
@@ -59,7 +63,34 @@ def _parser():
     talk.add_argument("--quiet", action="store_true", help="print the result line only")
     talk.add_argument("--verbose", action="store_true", help="add the column map and every derived cell")
     sub.add_parser("packs", help="list the installed rule packs")
+    up = sub.add_parser("ui", help="open the goslint page in your browser, served on this computer only")
+    up.add_argument("--no-browser", dest="no_browser", action="store_true", help="print the address; open no browser")
+    up.add_argument("--port", type=int, default=0, help=argparse.SUPPRESS)  # tests and previews only; 0 = the system picks
     return ap
+
+
+def _tty():
+    """A person at a terminal: both ends are a terminal, so questions can be asked and read."""
+    return sys.stdin.isatty() and sys.stdout.isatty()
+
+
+def _ask_mode(register=None):
+    from . import install, interactive
+
+    if not install.offer():
+        return 2
+    return interactive.run(register)
+
+
+def _ui(args):
+    from . import install, ui
+
+    if _tty():
+        if not install.offer():
+            return 2
+    elif install.missing():
+        raise SetupError(packs.EXTRA)
+    return ui.serve(open_browser=not args.no_browser, app=ui.App(port=args.port))
 
 
 def _date(text):
@@ -82,11 +113,15 @@ def _run(args, out):
     if args.command == "packs":
         out.write(report.pack_list(packs.load_many()))
         return 0
+    if args.command == "ui":
+        return _ui(args)
     if args.grace_days < 0:
         raise SetupError("--grace-days cannot be negative.")
     as_of = _date(args.as_of) if args.as_of else None
     if args.json and args.json != "-" and _same_file(args.json, args.register):
         raise SetupError("--json names the register itself; goslint never writes to the register.")
+    if not args.pack and _tty():
+        return _ask_mode(args.register)  # a person at a terminal chooses the packs from lists
     if not args.pack:
         # Packs are chosen, never assumed (D153.4): every pack on a single-jurisdiction register is noise.
         raise SetupError("Choose the rule packs for this register's jurisdictions with --pack, "
@@ -124,6 +159,12 @@ def main(argv=None):
     except SystemExit as e:  # argparse: 2 for a usage error, 0 after --help or --version
         return e.code if isinstance(e.code, int) else 2
     if args.command is None:
+        if _tty():
+            try:
+                return _ask_mode()
+            except SetupError as e:
+                sys.stderr.write("goslint: %s\n" % e)
+                return 2
         ap.print_usage(sys.stderr)
         return 2
     try:

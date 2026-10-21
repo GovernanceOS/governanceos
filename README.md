@@ -2,14 +2,14 @@
 
 [![PyPI](https://img.shields.io/pypi/v/governanceos)](https://pypi.org/project/governanceos/) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE) [![Tests](https://github.com/GovernanceOS/governanceos/actions/workflows/test.yml/badge.svg)](https://github.com/GovernanceOS/governanceos/actions/workflows/test.yml)
 
-**New in 0.3.0, released 20 October 2026: goslint, the open-source register linter.** It checks the AI and model register you keep in a spreadsheet against 23 regulator rule packs and 246 fields, for Canada, the United States, the GCC, the European Union, the United Kingdom, Switzerland and Asia-Pacific. It runs on your own machine, free and offline, under Apache 2.0.
+**New in 0.4.0: goslint ui.** Run `goslint ui` and the goslint page opens in your browser, served from your own computer: choose your register, tick the regulators that supervise it, and read what to fix. Or run `goslint` and answer a few questions in the terminal. goslint checks the AI and model register you keep in a spreadsheet against 23 regulator rule packs and 246 fields, for Canada, the United States, the GCC, the European Union, the United Kingdom, Switzerland and Asia-Pacific. It is free, under Apache 2.0, and it also runs in your browser at [governanceos.si/lint](https://governanceos.si/lint).
 
 ```
-pip install "governanceos[lint]"
-goslint lint register.xlsx --pack osfi-e23
+pip install governanceos
+goslint ui
 ```
 
-Open-source tools from [GovernanceOS™](https://governanceos.si), under the Apache License 2.0. They run on your own machine and make no network calls. `gos-verify` needs Python 3 and nothing else; `goslint` adds two libraries, openpyxl and PyYAML.
+Open-source tools from [GovernanceOS™](https://governanceos.si), under the Apache License 2.0. They run on your own machine. `gos-verify` and `goslint lint` make no network calls; `goslint ui` serves its page only to your own browser, at 127.0.0.1. `gos-verify` needs Python 3 and nothing else; `goslint` adds two libraries, openpyxl and PyYAML, and `goslint ui` or `goslint` at a terminal offers to install them for you.
 
 ```
 pip install governanceos              # gos-verify
@@ -76,6 +76,27 @@ Notes and check 4 do not change the exit code.
 **What it does not check:** whether the values are true.
 
 Each pack is generated from GovernanceOS's register coverage research, which read every source at its official URL on 2026-10-19 (`tools/gen_packs.py`). Header synonyms are working guesses for matching column names, not source text.
+
+## goslint ui: the page on your own computer
+
+```
+goslint ui
+```
+
+goslint opens its page in your browser, served from this computer: drop or choose a register (or try the fictional Nebula Mutual sample), tick the regulators that supervise it, then copy or save the report and findings. If openpyxl and PyYAML are missing, it asks first and installs them with pip only on a yes. It runs the same code as `goslint lint`, so both give the same findings.
+
+Four safeguards keep the page to you:
+
+1. It listens only on 127.0.0.1, on a port the system picks, and opens no outbound connection.
+2. A one-time secret token is part of every address; a request without it is answered "not found".
+3. A request for any host other than 127.0.0.1 or localhost on that port is refused, and so is a POST from another site.
+4. It stops a few seconds after you close the page, or when you press Ctrl+C.
+
+Your register goes from your browser to goslint on this computer in memory; nothing is written to disk, and no request is logged.
+
+## goslint, a question at a time
+
+At a terminal, `goslint` on its own (or `goslint lint register.xlsx` without `--pack`) asks which register, which regions and which rule packs (from numbered lists), and the review date (Enter means today). It prints the report, offers to save the findings, and ends with the one-line command that runs the same check, for next time. In scripts and pipes nothing is asked: without `--pack`, goslint lists the packs and stops, so packs are always chosen, never assumed.
 
 ## gos-verify: verify an evidence pack offline
 

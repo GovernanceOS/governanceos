@@ -18,6 +18,32 @@ pip install "governanceos[lint]"      # gos-verify and goslint
 
 Follow GovernanceOS on [YouTube](https://www.youtube.com/@GovernanceOS) and [X](https://x.com/GovernanceOSx). Both tools are described at [governanceos.si/open-source](https://governanceos.si/open-source).
 
+## Install on a computer with no internet
+
+Both tools run without a network, so they can go on a workstation that has none. Download the files on a connected computer, carry the folder across by your organization's own transfer process, and install from the folder. On macOS and Linux, write `python3` for `python`.
+
+On the connected computer, with the same operating system and Python version as the workstation:
+
+```
+python -m pip download -d governanceos-files "governanceos[lint]"
+```
+
+On the workstation:
+
+```
+python -m pip install --no-index --find-links governanceos-files "governanceos[lint]"
+```
+
+`--no-index` keeps pip away from every package index: it installs only what is in the folder, and stops with an error if anything is missing. The folder holds four files: governanceos, openpyxl, et_xmlfile and PyYAML. The PyYAML file is built for one Python version and one operating system, so a folder made for one workstation may not install on another.
+
+If the connected computer differs from the workstation, name the workstation's Python version and platform when you download. For Python 3.10 on 64-bit Windows:
+
+```
+python -m pip download -d governanceos-files --only-binary=:all: --python-version 3.10 --platform win_amd64 "governanceos[lint]"
+```
+
+For 64-bit Linux, the platform is `manylinux2014_x86_64`. PyPI shows the SHA-256 checksum of every file on each project's page, under Release files, then Details, so your security team can check the folder before it crosses.
+
 ## goslint: lint a model register offline
 
 Many practitioners keep their AI and model inventory in a spreadsheet. `goslint` checks that spreadsheet (`.xlsx`, `.xlsm` or `.csv`) against regulator rule packs on your own machine and reports four things:

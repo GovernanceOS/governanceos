@@ -9,7 +9,8 @@ body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-app
 a{color:var(--accent)}
 .top{border-bottom:1px solid var(--line)}
 .top-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;min-height:56px}
-.brand{font-weight:700;font-size:20px;letter-spacing:.02em}
+.brand{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:20px;letter-spacing:.02em}
+.mark{width:28px;height:28px;flex:none}.mark .flag{fill:#ff9900}
 .from{color:var(--sub);font-size:14px}
 .local{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:14px;border:1px solid var(--line);border-radius:var(--radius);padding:3px 10px}
 .local svg{width:16px;height:16px}

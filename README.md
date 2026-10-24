@@ -2,6 +2,8 @@
 
 [![PyPI](https://img.shields.io/pypi/v/governanceos)](https://pypi.org/project/governanceos/) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE) [![Tests](https://github.com/GovernanceOS/governanceos/actions/workflows/test.yml/badge.svg)](https://github.com/GovernanceOS/governanceos/actions/workflows/test.yml)
 
+<img src="https://raw.githubusercontent.com/GovernanceOS/governanceos/main/assets/goslint-icon-tile-192.png" alt="goslint" width="72" height="72">
+
 **New in 0.4.0: goslint ui.** Run `goslint ui` and the goslint page opens in your browser, served from your own computer: choose your register, tick the regulators that supervise it, and read what to fix. Or run `goslint` and answer a few questions in the terminal. goslint checks the AI and model register you keep in a spreadsheet against 23 regulator rule packs and 246 fields, for Canada, the United States, the GCC, the European Union, the United Kingdom, Switzerland and Asia-Pacific. It is free, under Apache 2.0, and it also runs in your browser at [governanceos.si/lint](https://governanceos.si/lint).
 
 ```

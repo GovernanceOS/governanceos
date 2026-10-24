@@ -26,9 +26,9 @@ from .packs import SetupError
 
 HERE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ui")
 FILES = {"": "index.html", "index.html": "index.html", "app.js": "app.js", "app.css": "app.css",
-         "sample.xlsx": "sample.xlsx"}
+         "sample.xlsx": "sample.xlsx", "icon.svg": "icon.svg"}
 TYPES = {".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8",
-         ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}
+         ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", ".svg": "image/svg+xml"}
 CSP = ("default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; "
        "form-action 'none'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'")
 MAX_BYTES = 50 * 1024 * 1024  # a register larger than this is not a register

@@ -82,6 +82,12 @@ class Server(unittest.TestCase):
         self.assertEqual(h["referrer-policy"], "same-origin")
         self.assertIn(b"Check your model register", body)
 
+    def test_the_icon_is_served_behind_the_token(self):
+        status, body, h = self.call("GET", self.base + "icon.svg")
+        self.assertEqual((status, h["content-type"]), (200, "image/svg+xml"))
+        self.assertTrue(body.startswith(b"<svg"))
+        self.assertEqual(self.call("GET", "/icon.svg")[0], 404)  # without the token, nothing
+
     def test_the_catalog_and_a_lint_match_the_command_line(self):
         cat = json.loads(self.call("GET", self.base + "catalog")[1])
         self.assertEqual(len(cat["packs"]), 23)
@@ -143,9 +149,16 @@ class Stopping(unittest.TestCase):
 
 class PageFiles(unittest.TestCase):
     def test_the_page_runs_under_its_policy(self):
-        self.assertEqual(sorted(os.listdir(UI_DIR)), ["app.css", "app.js", "index.html", "sample.xlsx"])
+        self.assertEqual(sorted(os.listdir(UI_DIR)), ["app.css", "app.js", "icon.svg", "index.html", "sample.xlsx"])
         with open(os.path.join(UI_DIR, "index.html"), encoding="utf-8") as f:
             page = f.read()
+        self.assertIn('<link rel="icon" href="icon.svg" type="image/svg+xml">', page)  # the goslint icon
+        self.assertEqual(ui.FILES["icon.svg"], "icon.svg")
+        self.assertEqual(ui.TYPES[".svg"], "image/svg+xml")
+        with open(os.path.join(UI_DIR, "icon.svg"), encoding="utf-8") as f:
+            icon = f.read()
+        self.assertNotIn("<script", icon)
+        self.assertNotIn("href", icon)  # self-contained: nothing for the page's policy to fetch
         self.assertIsNone(re.search(r"<script(?![^>]*\bsrc=)[^>]*>", page))  # no inline script
         self.assertIsNone(re.search(r"\sstyle=", page))  # no inline style
         self.assertIn("a fictional institution constructed for illustration", page)
